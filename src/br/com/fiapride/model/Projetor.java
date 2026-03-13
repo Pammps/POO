@@ -1,41 +1,55 @@
 package br.com.fiapride.model;
 
 public class Projetor {
-	
-	// atributos (caracteristicas)
+
+	// atributos
 	public int peso;
 	public double tamanho;
-	public String tipoFonteLampada;
-	public String tipoFonteLed;
+	public String tipoFonte;
 	public boolean ligado;
-	
-	public Projetor(int peso, double tamanho, String tipo_fonte, boolean ligado) {
+
+	// construtor
+	public Projetor(int peso, double tamanho, String tipoFonte) {
 		this.peso = peso;
 		this.tamanho = tamanho;
-		this.tipoFonteLampada = tipoFonteLampada;
-		this.tipoFonteLed = tipoFonteLampada;
-		this.ligado = ligado;
+		this.tipoFonte = tipoFonte;
+		this.ligado = false;
 	}
 
-}
-
-	public void projetarImagem(String imagem) {
-		if (ligado) {
-			System.out.println("Imagem sendo projetada");
+	// método 1 - ligar projetor
+	public void ligar() {
+		if (ligado == true) {
+			System.out.println("O projetor já está ligado.");
 		} else {
-			System.out.println("Projetor está desligado");
-		return;
+			ligado = true;
+			System.out.println("Projetor ligado.");
 		}
-		if (tipoFonteLampada == tipoFonteLampada) {
-			System.out.println("Projetando com lâmpada amarela"); 
-				
-		} else if (tipoFonteLed == tipoFonteLed) {
-			System.out.println("Projetando com LED");
-		}
-		
-		System.out.println(Imagem + imagem);
-		}
-	
-	public Void emitirSom(double som) {
-		if (s)
 	}
+
+	// método 2 - desligar projetor
+	public void desligar() {
+		if (ligado == false) {
+			System.out.println("O projetor já está desligado.");
+		} else {
+			ligado = false;
+			System.out.println("Projetor desligado.");
+		}
+	}
+
+	// método 3 - projetar imagem
+	public void projetarImagem(String imagem) {
+
+		if (ligado == false) {
+			System.out.println("Não é possível projetar. O projetor está desligado.");
+			return;
+		}
+
+		if (tipoFonte.equals("Lâmpada")) {
+			System.out.println("Projetando com lâmpada amarela...");
+		} else if (tipoFonte.equals("LED")) {
+			System.out.println("Projetando com LED...");
+		}
+
+		System.out.println("Imagem projetada: " + imagem);
+	}
+}
